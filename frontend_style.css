@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#app {
+    width: 100%;
+    max-width: 1200px;
+    height: 90vh;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Экран входа */
+.screen {
+    display: none;
+    height: 100%;
+}
+
+.screen.active {
+    display: block;
+}
+
+.login-container {
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo i {
+    font-size: 48px;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 18px;
+}
+
+.login-form {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group label i {
+    color: #667eea;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.action-buttons {
+    margin: 40px 0;
+}
+
+.btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+    margin-top: 15px;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider span {
+    background: white;
+    padding: 0 20px;
+    color: #999;
+    font-size: 14px;
+}
+
+.tips {
+    background: #f8f9ff;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    margin-top: 40px;
+}
+
+.tips h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.tips ol {
+    padding-left: 20px;
+    color: #555;
+}
+
+.tips li {
+    margin-bottom: 8px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* Экран комнаты */
+.room-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-info h2 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.room-users {
+    margin-top: 5px;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.room-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    padding: 10px 20px;
+    font-size: 14px;
+    width: auto;
+}
+
+.btn-danger {
+    background: #ff4757;
+}
+
+.btn-danger:hover {
+    background: #ff3742;
+}
+
+.room-container {
+    display: flex;
+    height: calc(90vh - 80px);
+}
+
+.users-sidebar {
+    width: 250px;
+    border-right: 1px solid #e1e1e1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.users-sidebar h3 {
+    margin-bottom: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#users-list {
+    list-style: none;
+}
+
+#users-list li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: #f8f9ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#users-list li i {
+    color: #667eea;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.welcome-message {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+}
+
+.welcome-message i {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.welcome-message h3 {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.message {
+    margin-bottom: 20px;
+    max-width: 70%;
+}
+
+.message.user-message {
+    margin-left: auto;
+}
+
+.message-content {
+    padding: 15px;
+    border-radius: 18px;
+    position: relative;
+}
+
+.other-message .message-content {
+    background: white;
+    border: 1px solid #e1e1e1;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.other-message .message-header {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.user-message .message-header {
+    color: rgba(255,255,255,0.9);
+}
+
+.message-time {
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.message-text {
+    line-height: 1.5;
+}
+
+.file-message {
+    padding: 15px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e1e1e1;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.file-icon {
+    font-size: 24px;
+    color: #667eea;
+}
+
+.file-details h4 {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.file-details p {
+    color: #666;
+    font-size: 14px;
+}
+
+.download-btn {
+    margin-left: auto;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.system-message {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.message-input-container {
+    display: flex;
+    padding: 20px;
+    border-top: 1px solid #e1e1e1;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-actions {
+    display: flex;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #667eea;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+#message-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn-send {
+    width: auto;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+}
+
+/* Уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: #333;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.notification.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .room-container {
+        flex-direction: column;
+    }
+    
+    .users-sidebar {
+        width: 100%;
+        height: 200px;
+        border-right: none;
+        border-bottom: 1px solid #e1e1e1;
+    }
+    
+    .message {
+        max-width: 85%;
+    }
+    
+    .login-container {
+        padding: 20px;
+    }
+}

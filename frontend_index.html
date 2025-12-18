@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Messenger - Общайтесь с друзьями</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Экран входа -->
+        <div id="login-screen" class="screen active">
+            <div class="login-container">
+                <div class="logo">
+                    <i class="fas fa-comments"></i>
+                    <h1>Real Messenger</h1>
+                    <p class="subtitle">Быстрое и безопасное общение</p>
+                </div>
+                
+                <div class="login-form">
+                    <div class="form-group">
+                        <label for="username">
+                            <i class="fas fa-user"></i> Ваше имя
+                        </label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            placeholder="Введите ваше имя"
+                            maxlength="20"
+                        >
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="create-room-btn" class="btn btn-primary">
+                            <i class="fas fa-plus-circle"></i> Создать новую комнату
+                        </button>
+                        
+                        <div class="divider">
+                            <span>или</span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="room-id">
+                                <i class="fas fa-door-closed"></i> ID комнаты друга
+                            </label>
+                            <input 
+                                type="text" 
+                                id="room-id" 
+                                placeholder="Введите код комнаты"
+                                maxlength="6"
+                                style="text-transform: uppercase"
+                            >
+                        </div>
+                        
+                        <button id="join-room-btn" class="btn btn-secondary">
+                            <i class="fas fa-sign-in-alt"></i> Присоединиться
+                        </button>
+                    </div>
+                    
+                    <div class="tips">
+                        <h3><i class="fas fa-lightbulb"></i> Как это работает:</h3>
+                        <ol>
+                            <li>Введите ваше имя</li>
+                            <li>Создайте комнату → получите код</li>
+                            <li>Отправьте код другу</li>
+                            <li>Друг вводит этот код и присоединяется</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="footer">
+                    <p>✅ Без регистрации | 🔒 Безопасно | 🚀 Быстро</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран комнаты -->
+        <div id="room-screen" class="screen">
+            <div class="room-header">
+                <div class="room-info">
+                    <h2><i class="fas fa-hashtag"></i> <span id="current-room-id">---</span></h2>
+                    <p class="room-users">
+                        <i class="fas fa-users"></i>
+                        <span id="users-count">1</span> пользователь(ей) онлайн
+                    </p>
+                </div>
+                <div class="room-actions">
+                    <button id="copy-room-id" class="btn btn-small">
+                        <i class="fas fa-copy"></i> Копировать код
+                    </button>
+                    <button id="leave-room" class="btn btn-small btn-danger">
+                        <i class="fas fa-sign-out-alt"></i> Выйти
+                    </button>
+                </div>
+            </div>
+
+            <div class="room-container">
+                <!-- Список пользователей -->
+                <div class="users-sidebar">
+                    <h3><i class="fas fa-user-friends"></i> Участники</h3>
+                    <ul id="users-list"></ul>
+                </div>
+
+                <!-- Чат -->
+                <div class="chat-container">
+                    <div class="messages-container" id="messages-container">
+                        <!-- Сообщения будут здесь -->
+                        <div class="welcome-message">
+                            <i class="fas fa-comment-dots"></i>
+                            <h3>Добро пожаловать в чат!</h3>
+                            <p>Отправьте первое сообщение или поделитесь кодом комнаты с другом.</p>
+                        </div>
+                    </div>
+
+                    <div class="message-input-container">
+                        <div class="input-actions">
+                            <button id="attach-file" class="icon-btn" title="Прикрепить файл">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <input type="file" id="file-input" hidden accept="image/*, .txt, .pdf, .doc, .docx">
+                        </div>
+                        
+                        <input 
+                            type="text" 
+                            id="message-input" 
+                            placeholder="Введите сообщение..."
+                            maxlength="1000"
+                        >
+                        
+                        <button id="send-message" class="btn btn-send">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div id="notification" class="notification"></div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
